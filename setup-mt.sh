@@ -2,7 +2,7 @@
 
 ######## settings ########
 src_path='/path/to/mt/archive/MT-6.1.1.zip'
-app_name='admin'
+app_name='mt'
 app_cfg_path='/path/to/mt/mt-config.cgi'
 
 #plugin switch
