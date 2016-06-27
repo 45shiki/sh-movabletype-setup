@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ######## settings ########
-src_path='/path/to/mt/archive/MT-6.2.zip'
+src_path='/path/to/mt/archive/MT-6.2.4.zip'
 app_name='mt'
 app_cfg_path='/path/to/mt/mt-config.cgi'
 
@@ -19,7 +19,6 @@ TinyMCE=1
 WXRImporter=1
 WidgetManager=1
 feeds_app_lite=1
-mixiComment=1
 spamlookup=1
 ########/settings ########
 
@@ -56,7 +55,7 @@ declare -A default_files=(
 )
 
 declare -a default_plugins=(
-    #MT6.2
+    #MT6.2.4
     "FacebookCommenters"
     "FormattedText"
     "FormattedTextForTinyMCE"
@@ -70,7 +69,6 @@ declare -a default_plugins=(
     "WXRImporter"
     "WidgetManager"
     "feeds-app-lite"
-    "mixiComment"
     "spamlookup"
 )
 
