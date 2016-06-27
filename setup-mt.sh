@@ -133,8 +133,8 @@ if [ -d "${app_name}" ]; then
     mkdir -p ${app_name}/plugins_disabled
     for plugin in "${default_plugins[@]}"
     do
-#        echo "${plugin/-/_}"
-        eval switch='${'${plugin/-/_}'}'
+#        echo "${plugin//-/_}"
+        eval switch='${'${plugin//-/_}'}'
 #        echo "${switch}"
         if [ "${switch}" != 1 ]; then
             echo "mv ${app_name}/plugins/${plugin} ${app_name}/plugins_disabled/"
