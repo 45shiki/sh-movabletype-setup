@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ######## settings ########
-src_path='/path/to/mt/archive/MT-6.1.1.zip'
+src_path='/path/to/mt/archive/MT-6.2.zip'
 app_name='mt'
 app_cfg_path='/path/to/mt/mt-config.cgi'
 
@@ -10,7 +10,6 @@ FacebookCommenters=1
 FormattedText=1
 FormattedTextForTinyMCE=1
 GoogleAnalytics=1
-Loupe=1
 Markdown=1
 MultiBlog=1
 SmartphoneOption=1
@@ -57,12 +56,11 @@ declare -A default_files=(
 )
 
 declare -a default_plugins=(
-    #MT6.1.1
+    #MT6.2
     "FacebookCommenters"
     "FormattedText"
     "FormattedTextForTinyMCE"
     "GoogleAnalytics"
-    "Loupe"
     "Markdown"
     "MultiBlog"
     "SmartphoneOption"
