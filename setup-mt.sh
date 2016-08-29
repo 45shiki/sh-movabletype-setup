@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ######## settings ########
-src_path='/path/to/mt/archive/MT-6.2.4.zip'
+src_path='/path/to/mt/archive/MT-6.3.zip'
 app_name='mt'
 app_cfg_path='/path/to/mt/mt-config.cgi'
 
@@ -55,7 +55,7 @@ declare -A default_files=(
 )
 
 declare -a default_plugins=(
-    #MT6.2.4
+    #MT6.3
     "FacebookCommenters"
     "FormattedText"
     "FormattedTextForTinyMCE"
