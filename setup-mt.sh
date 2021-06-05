@@ -9,6 +9,7 @@ app_cfg_path='/path/to/mt/mt-config.cgi'
 FacebookCommenters=1
 FormattedText=1
 FormattedTextForTinyMCE=1
+FormattedTextForTinyMCE5=1
 GoogleAnalytics=1
 Markdown=1
 MultiBlog=1
@@ -16,6 +17,7 @@ SmartphoneOption=1
 StyleCatcher=1
 Textile=1
 TinyMCE=1
+TinyMCE5=1
 WXRImporter=1
 WidgetManager=1
 feeds_app_lite=1
@@ -59,6 +61,7 @@ declare -a default_plugins=(
     "FacebookCommenters"
     "FormattedText"
     "FormattedTextForTinyMCE"
+    "FormattedTextForTinyMCE5"
     "GoogleAnalytics"
     "Markdown"
     "MultiBlog"
@@ -66,6 +69,7 @@ declare -a default_plugins=(
     "StyleCatcher"
     "Textile"
     "TinyMCE"
+    "TinyMCE5"
     "WXRImporter"
     "WidgetManager"
     "feeds-app-lite"
