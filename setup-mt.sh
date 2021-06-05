@@ -5,7 +5,7 @@ src_path='/path/to/mt/archive/MT-6.3.zip'
 app_name='mt'
 app_cfg_path='/path/to/mt/mt-config.cgi'
 
-#plugin switch
+#plugin switch ( 1=Enable, 0=Disable )
 FacebookCommenters=1
 FormattedText=1
 FormattedTextForTinyMCE=1
@@ -57,7 +57,7 @@ declare -A default_files=(
 )
 
 declare -a default_plugins=(
-    #MT6.3
+    #MT 6.7.1 over
     "FacebookCommenters"
     "FormattedText"
     "FormattedTextForTinyMCE"
