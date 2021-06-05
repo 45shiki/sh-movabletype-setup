@@ -89,31 +89,38 @@ if [ -d "${app_name}" ]; then
     exit
 fi
 
-echo "Start ..."
+if [ "${1}" ]; then
+    verbose='-v'
+fi
 
-echo "Unzip ${mt_dir} ..."
+if [ "${verbose}" ]; then
+    echo "Start ..."
+fi
+
 if [ -f "${src_path}" ];then
+    if [ "${verbose}" ]; then
+        echo "Unzip ${mt_dir} ..."
+    fi
     unzip -q ${src_path}
 else
     echo "Error : not found ${src_path}"
     exit
 fi
 
-echo "Making ${app_name} ..."
-mv ${mt_dir} ${app_name}
+if [ "${verbose}" ]; then
+    echo "Making ${app_name} ..."
+fi
+mv ${verbose} ${mt_dir} ${app_name}
 
 if [ -d "${app_name}" ]; then
-    echo "chmod 644 ${app_name}/tools/*"
-    chmod 644 ${app_name}/tools/*
+    chmod ${verbose} 644 ${app_name}/tools/*
 
-    mkdir -p ${app_name}/_cgi
-    mv ${app_name}/mt-testbg.cgi ${app_name}/_cgi/
-    mv ${app_name}/mt-config.cgi-original ${app_name}/_cgi/
+    mkdir ${verbose} -p ${app_name}/_cgi
+    mv ${verbose} ${app_name}/mt-testbg.cgi ${app_name}/_cgi/
+    mv ${verbose} ${app_name}/mt-config.cgi-original ${app_name}/_cgi/
 
     if [ -f "${app_cfg_path}" ]; then
-        echo "copying mt-config.cgi ..."
-        cp ${app_cfg_path} ${app_name}/
-        echo "renaming cgi file..."
+        cp ${verbose} ${app_cfg_path} ${app_name}/
         if [ -f "${app_name}/mt-config.cgi" ]; then
             cat ${app_name}/mt-config.cgi | while read key val
             do
@@ -121,11 +128,9 @@ if [ -d "${app_name}" ]; then
                     if [ "${default_files["${key,,}"]}" ]; then
                         if [ -f "${app_name}/${default_files["${key,,}"]}" ]; then
                             if [ "${val}" != 0 ]; then
-                                echo "mv ${app_name}/${default_files["${key,,}"]} ${app_name}/${val}"
-                                mv ${app_name}/${default_files["${key,,}"]} ${app_name}/${val}
+                                mv ${verbose} ${app_name}/${default_files["${key,,}"]} ${app_name}/${val}
                             else
-                                echo "mv ${app_name}/${default_files["${key,,}"]} ${app_name}/_cgi/"
-                                mv ${app_name}/${default_files["${key,,}"]} ${app_name}/_cgi/
+                                mv ${verbose} ${app_name}/${default_files["${key,,}"]} ${app_name}/_cgi/
                             fi
                         fi
                     fi
@@ -134,30 +139,28 @@ if [ -d "${app_name}" ]; then
         fi
     fi
 
-    mkdir -p ${app_name}/plugins_disabled
+    mkdir ${verbose} -p ${app_name}/plugins_disabled
     for plugin in "${default_plugins[@]}"
     do
-#        echo "${plugin//-/_}"
         eval switch='${'${plugin//-/_}'}'
-#        echo "${switch}"
         if [ "${switch}" != 1 ]; then
-            echo "mv ${app_name}/plugins/${plugin} ${app_name}/plugins_disabled/"
-            mv ${app_name}/plugins/${plugin} ${app_name}/plugins_disabled/
+            mv ${verbose} ${app_name}/plugins/${plugin} ${app_name}/plugins_disabled/
             if [ "${plugin}" = "SmartphoneOption" ]; then
                 if [ -f "${app_name}/${default_files["smartphoneadminscript"]}" ]; then
-                    echo "mv ${app_name}/${default_files["smartphoneadminscript"]} ${app_name}/_cgi/"
-                    mv ${app_name}/${default_files["smartphoneadminscript"]} ${app_name}/_cgi/
+                    mv ${verbose} ${app_name}/${default_files["smartphoneadminscript"]} ${app_name}/_cgi/
                 fi
             fi
         fi
     done
 
-    chmod 600 ${app_name}/_cgi/*
-    chmod 700 ${app_name}/_cgi
-    chmod 700 ${app_name}/plugins_disabled
+    chmod ${verbose} 600 ${app_name}/_cgi/*
+    chmod ${verbose} 700 ${app_name}/_cgi
+    chmod ${verbose} 700 ${app_name}/plugins_disabled
 fi
 
-echo "Complete !"
+if [ "${verbose}" ]; then
+    echo "Complete !"
+fi
 
 exit
 
